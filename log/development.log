@@ -3825,3 +3825,66 @@ Started GET "/assets/users-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0
 
 Started GET "/assets/application-a9d36860f1323bcbb4462517423d5d67.js?body=1" for 127.0.0.1 at 2014-12-20 14:38:04 -0800
   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1[0m
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-12-20 15:38:16 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_shim.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 302ms (Views: 268.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/custom-823f7233331d477d8e9724c5ce82a474.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/microposts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/scaffolds-7517f4f0f28210afe0bc4295b6b1e055.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/application-cec0e8144d4abb2ca3edfad796a992d4.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/users-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/jquery-ea2706bc2d0586731b7c00ec2cd0a414.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/static_page-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/jquery_ujs-99f13489684e179b71ca7517fb74318d.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/static_page-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/microposts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/users-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/assets/application-a9d36860f1323bcbb4462517423d5d67.js?body=1" for 127.0.0.1 at 2014-12-20 15:38:17 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-20 15:38:20 -0800
+Processing by StaticPageController#home as HTML
+  Rendered static_page/home.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 202ms (Views: 201.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails-15ff13e9c3486ddd78bc91be8063523d.png" for 127.0.0.1 at 2014-12-20 15:38:20 -0800
