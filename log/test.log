@@ -8945,3 +8945,314 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.4ms)
   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
   [1m[36m (46.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `microposts`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `microposts` (`content`, `text`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 1, '2014-12-21 01:17:10', '2014-12-21 01:17:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `microposts` (`content`, `text`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 1, '2014-12-21 01:17:10', '2014-12-21 01:17:10', 298486374)
+  [1m[36m (62.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------
+SiteLayoutTest: test_layout_links
+---------------------------------
+Started GET "/" for 127.0.0.1 at 2014-12-20 17:17:10 -0800
+Processing by StaticPageController#home as HTML
+  Rendered static_page/home.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_shim.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 75ms (Views: 63.5ms | ActiveRecord: 0.0ms)
+Started GET "/signup" for 127.0.0.1 at 2014-12-20 17:17:10 -0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (3.7ms)
+  Rendered users/new.html.erb within layouts/application (84.6ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 109ms (Views: 99.0ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+UserTest: test_email_addresses_should_be_saved_as_lower-case
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'Foo@ExAMPLE.CoM' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`email`, `name`, `password_digest`, `created_at`, `updated_at`) VALUES ('foo@example.com', 'Abner Benavides', '$2a$04$svmMvKmkgre0ODp1JSYOF.mb5ZkdHGfM3Ea8CFo/jRTeFGeAkSkkq', '2014-12-21 01:17:10.608430', '2014-12-21 01:17:10.608430')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[35m (63.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UserTest: test_password_should_have_a_minimum_length
+----------------------------------------------------
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+UserTest: test_email_validation_should_accept_valid_addreses
+------------------------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'user@example.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'USER@foo.COM' LIMIT 1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'A_US-ER@foo.bar.org' LIMIT 1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'first.last@foo.jp' LIMIT 1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'alice+bob@baz.cn' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = ' ' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+UserTest: test_email_addresses_should_be_unique
+-----------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'abnerb86@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`email`, `name`, `password_digest`, `created_at`, `updated_at`) VALUES ('abnerb86@gmail.com', 'Abner Benavides', '$2a$04$zrmOlXDsthGXjYUnOxcwnOmEYWzNsazAmu9sfznWEOfMV1WqWnAFe', '2014-12-21 01:17:10.738447', '2014-12-21 01:17:10.738447')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'ABNERB86@GMAIL.COM' LIMIT 1
+  [1m[36m (48.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------------------
+MicropostsControllerTest: test_should_update_micropost
+------------------------------------------------------
+  [1m[36mMicropost Load (1.3ms)[0m  [1mSELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1[0m
+Processing by MicropostsController#update as HTML
+  Parameters: {"micropost"=>{"content"=>"MyString", "text"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/microposts/980190962
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------
+MicropostsControllerTest: test_should_show_micropost
+----------------------------------------------------
+  [1m[36mMicropost Load (0.2ms)[0m  [1mSELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1[0m
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  Rendered microposts/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+MicropostsControllerTest: test_should_get_new
+---------------------------------------------
+  [1m[36mMicropost Load (0.2ms)[0m  [1mSELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1[0m
+Processing by MicropostsController#new as HTML
+  Rendered microposts/_form.html.erb (7.3ms)
+  Rendered microposts/new.html.erb within layouts/application (10.1ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+MicropostsControllerTest: test_should_get_index
+-----------------------------------------------
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+Processing by MicropostsController#index as HTML
+  [1m[36mMicropost Load (0.5ms)[0m  [1mSELECT `microposts`.* FROM `microposts`[0m
+  Rendered microposts/index.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+MicropostsControllerTest: test_should_create_micropost
+------------------------------------------------------
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `microposts`[0m
+Processing by MicropostsController#create as HTML
+  Parameters: {"micropost"=>{"content"=>"MyString", "text"=>"MyString", "user_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `microposts` (`content`, `text`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', 1, '2014-12-21 01:17:10.893370', '2014-12-21 01:17:10.893370')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/microposts/980190964
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `microposts`[0m
+  [1m[35m (55.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+MicropostsControllerTest: test_should_destroy_micropost
+-------------------------------------------------------
+  [1m[35mMicropost Load (0.4ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `microposts`[0m
+Processing by MicropostsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `microposts` WHERE `microposts`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/microposts
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `microposts`
+  [1m[36m (54.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+MicropostsControllerTest: test_should_get_edit
+----------------------------------------------
+  [1m[36mMicropost Load (0.5ms)[0m  [1mSELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1[0m
+Processing by MicropostsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mMicropost Load (0.2ms)[0m  SELECT  `microposts`.* FROM `microposts` WHERE `microposts`.`id` = 980190962 LIMIT 1
+  Rendered microposts/_form.html.erb (5.7ms)
+  Rendered microposts/edit.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+StaticPageControllerTest: test_should_get_about
+-----------------------------------------------
+Processing by StaticPageController#about as HTML
+  Rendered static_page/about.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-------------------------------------------------
+StaticPageControllerTest: test_should_get_contact
+-------------------------------------------------
+Processing by StaticPageController#contact as HTML
+  Rendered static_page/contact.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+StaticPageControllerTest: test_should_get_help
+----------------------------------------------
+Processing by StaticPageController#help as HTML
+  Rendered static_page/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+StaticPageControllerTest: test_should_get_home
+----------------------------------------------
+Processing by StaticPageController#home as HTML
+  Rendered static_page/home.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+UsersSignupTest: test_invalid_signup_information
+------------------------------------------------
+Started GET "/signup" for 127.0.0.1 at 2014-12-20 17:17:11 -0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Started POST "/users" for 127.0.0.1 at 2014-12-20 17:17:11 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"", "email"=>"user@invalid", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'user@invalid' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered shared/_error_messages.html.erb (3.1ms)
+  Rendered users/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 22ms (Views: 8.0ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+UsersSignupTest: test_valid_signup_information
+----------------------------------------------
+Started GET "/signup" for 127.0.0.1 at 2014-12-20 17:17:11 -0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `users`
+Started POST "/users" for 127.0.0.1 at 2014-12-20 17:17:11 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"Example User ", "email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = 'user@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('Example User ', 'user@example.com', '$2a$04$ZIE6orHtLZe6oK.CW8uG.uzLZIpV4vzq20UOBQEPO/imtxMv7vQqS', '2014-12-21 01:17:11.166994', '2014-12-21 01:17:11.166994')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/6
+Completed 302 Found in 10ms (ActiveRecord: 0.9ms)
+Started GET "/users/6" for 127.0.0.1 at 2014-12-20 17:17:11 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (58.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+UsersControllerTest: test_should_get_sign_up
+--------------------------------------------
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
